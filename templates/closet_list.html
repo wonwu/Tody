@@ -1,0 +1,36 @@
+{% block content %}
+
+{% include "base.html" %}
+
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
+
+<div class="col-xl mx-auto row mt-3" style="border-bottom: 0.2px solid gray; position: relative;">
+    <a href="{% url 'closet:top_create' user.id %}" class="col-sm-2 btn btn-warning block mt-3 mx-auto"><button class=" btn btn-warning block ">상의등록</button></a>
+    <a href="{% url 'closet:pants_create' user.id %}" class="col-sm-2 btn btn-warning block mt-3 mx-auto"><button class=" btn btn-warning block">하의등록</button></a>
+    <a href="{% url 'closet:outer_create' user.id %}" class="col-sm-2 btn btn-warning block mt-3 mx-auto"><button class=" btn btn-warning block">아우터등록</button></a>
+    <a href="{% url 'closet:onepiece_create' user.id %}" class="col-sm-2 btn btn-warning block mt-3 mx-auto"><button class=" btn btn-warning block">원피스등록</button></a>
+    <a href="{% url 'closet:skirt_create' user.id %}" class="col-sm-2 btn btn-warning block mt-3 mx-auto"><button class=" btn btn-warning block">스커트등록</button></a>
+</div>
+
+{% if closet_list %} <!-- 조건문 1 -->
+    <div class=" col-xl-12 row mt-5">
+        <ul>
+            {% for closet in closet_list %} <!-- elif 조건문 2 -->
+            <li style="width: 200px; float:left; margin: 0 1%;" >
+
+                <a href="{% url 'closet:detail' user.id closet.closet_id %}">
+                    <img src = "{{ closet.closet_url }}" width="200px" height="200px" class="mx-auto d-block img" style="float: left; margin:2% 2%;">                   
+                </a>
+                <p style="text-align: center;">{{ closet.closet_title }}</p>
+                <!-- views detail(request, closet_id) -->
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{% endblock %} 

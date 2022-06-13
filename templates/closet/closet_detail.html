@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="row container-fluid">
+    
+    <!-- <div class="col-sm-7" >                    
+        <p class="bg-primary" style="text-align: center; font-size:20px;">내 옷장 추천</p>
+        <p style="text-align: left; font-size:30px; margin-bottom:150px">"{{ closet.closet_title }}"에 대한 추천결과</p>        
+        
+        {% comment %} <div class="row" >
+            <div class="col-sm-6">                   {% endcomment %}
+            <div>                  
+                {% comment %} <div>
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block">                
+                </div>
+                <div>                    
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="300" height="300" class="mx-auto d-block"> 
+                </div>
+                <div>
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="300" height="300" class="mx-auto d-block">                     
+                </div>            
+                <div>
+                    <img style="border-radius:5%; clear:right; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:right;" src="{{ closet.closet_url }}" width="100" height="100" class="mx-auto d-block">                     
+                </div>
+                 -->
+                <!-- {% if recommend_list %}
+                {% for recommend in recommend_list %}
+                <div class="card;border-0 m-3" style="width:300px; float:left;">
+                    
+                    <img style="border-radius:5%; float:left;" src="{{recommend_list_1.closet_url}}" width="300px" height="300px" class="m-3 d-block">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align:center">내 옷 추천1</h4>
+                    </div>
+                </div> 
+                <div class="card;border-0 m-3" style="width:300px; float:left;">
+                    
+                    <img style="border-radius:5%; float:left;" src="{{recommend_list_2.imgUrl}}" width="300px" height="300px" class="m-3 d-block">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align:center">내 옷 추천2</h4>
+                    </div>
+                </div> 
+                <div class="card;border-0 m-3" style="width:300px; float:left;">
+                    
+                    <img style="border-radius:5%; float:left;" src="{{recommend_list_3.imgUrl}}" width="300px" height="300px" class="m-3 d-block">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align:center">내 옷 추천3</h4>
+                    </div>
+                </div> 
+                {% endfor %}
+                {% endif %}
+                <div>                    
+                    {% if recommend_list %}
+                    {% for recommend in recommend_list %}
+                    <img style="border-radius:5%; float:left;" src="{{recommend.imgUrl}}" width="300px" height="300px" class="m-3 d-block">
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>           -->
+            
+            <!-- {% comment %} <div class="col-sm-6">
+                <div>
+                    <img style="border-radius:5%; clear:right; float:left;" src="{{ closet.imgUrl }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:left;" src="{{ closet.imgUrl }}" width="100" height="100" class="mx-auto d-block"> 
+                    <img style="border-radius:5%; float:left;" src="{{ closet.imgUrl }}" width="100" height="100" class="mx-auto d-block">                     
+                </div>
+                <div>                    
+                    <img style="border-radius:5%; float:left;" src="{{ closet.imgUrl }}" width="300" height="300" class="mx-auto d-block"> 
+                </div>
+            </div>            
+        </div> {% endcomment %} -->
+    <!-- </div> -->
+
+
+    <div class="col-sm-12">
+        <div class='col-sm-6'>
+            <div>
+                <h2>내 옷장 추천 아이템</h2>                    
+                {% if my_recommend_list %}
+                {% for recommend in my_recommend_list %}
+                <div>
+                    <div class="card;border-0" style="width:250px; float:left;">
+                        <img src="{{recommend.closet_url}}" width="250" height="250" class="mx-auto d-block">
+                        <div class="card-body">
+                            <p>{{recommend.closet_title}}</p>              
+                        </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <div class='col-sm-6'>
+            <h2>쇼핑몰 추천 아이템</h2>                    
+            {% if recommend_list %}
+            {% for recommend in recommend_list %}
+            <div>
+                <div class="card;border-0" style="width:250px; float:left;">
+                    <img src="{{recommend.imgUrl}}" width="250" height="250" class="mx-auto d-block">
+                    <div class="card-body">
+                        <p>{{recommend.closet_title}}</p>                
+                        <a href="https://www.musinsa.com/app/goods/{{recommend.clothesId}}" class="btn btn-primary">구매하기</a>
+                    </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        
+        <!-- <p class="bg-primary" style="text-align: center; font-size:20px;">무신사 추천</p>
+        <p style="text-align: left; font-size:30px ">쇼핑하러 가기</p>              
+        <div>
+            <div class="card;border-0" style="width:250px; float:left;">
+                <img src="img0" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디1</h4>                
+                    <a href="url0" class="btn btn-primary">구매하기</a>
+                </div>
+            </div>
+
+            <div class="card;border-0" style="width:250px; float:left;">
+                <img src="img1" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디2</h4>                
+                    <a href="url1" class="btn btn-primary">구매하기</a>
+                </div>
+            </div>
+
+            <div class="card;border-0" style="width:250px; float:left;">
+                <img src="img2" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디3</h4>                
+                    <a href="url2" class="btn btn-primary">구매하기</a>
+                </div>
+            </div>
+
+            <div class="card;border-0" style="width:250px; float:left;">
+                <img src="img3" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디4</h4>                
+                    <a href="url3" class="btn btn-primary">구매하기</a>
+                </div>
+            </div>
+
+            <div class="card;border-0" style="width:250px; float:left;">
+                <img src="img4" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디5</h4>                
+                    <a href="url4" class="btn btn-primary">구매하기</a>
+                </div> -->
+            <!-- </div> -->
+
+            <!-- <div class="card;border-0" style="width:250px; float:left;">
+                <img src="https://image.msscdn.net/images/goods_img/20210205/1779467/1779467_1_500.jpg?t=20210205104523" width="250" height="250" class="mx-auto d-block">
+                <div class="card-body">
+                    <h4 class="card-title">추천코디6</h4>                
+                    <a href="https://www.musinsa.com/app/goods/1779467" class="btn btn-primary">구매하기</a>
+                </div>
+            </div>                 -->
+        <!-- </div>                   -->
+    <!-- </div> -->
+</div>
+
+{% endblock %} 

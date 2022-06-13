@@ -1,0 +1,96 @@
+{% block content %}
+{% include "base.html" %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+    #label-1 { display:inline-block; width:70px; }
+</style>
+
+<div class="container mt-3 ">
+    <h5 class="my-3 border-bottom pb-2">원피스</h5>
+
+    <form action="{% url 'closet:onepiece_create' user.id %}" method="POST" enctype="multipart/form-data">   
+        <div class="form-row field-closet_spring">
+                <div class="checkbox-row">
+                        <input type="checkbox" name="closet_spring" id="id_closet_spring">
+                        <label class="vCheckboxLabel" for="id_closet_spring">봄</label>
+                        <input type="checkbox" name="closet_summer" id="id_closet_summer">
+                        <label class="vCheckboxLabel" for="id_closet_summer">여름</label>
+                        <input type="checkbox" name="closet_fall" id="id_closet_fall">
+                        <label class="vCheckboxLabel" for="id_closet_fall">가을</label>
+                        <input type="checkbox" name="closet_winter" id="id_closet_winter">
+                        <label class="vCheckboxLabel" for="id_closet_winter">겨울</label>
+                </div>
+        </div>              
+
+        <!-- {% comment %} <div class="form-row field-section">
+            <div>
+                <label id="label-1" class="required" for="id_section">카테고리</label>
+                <select name="section" id="id_section">
+                    <option value="1">상의</option>
+                    <option value="2">하의</option>
+                    <option value="3">아우터</option>
+                    <option value="4">원피스</option>
+                </select>
+            </div>
+        </div> {% endcomment %} -->
+        <!-- {% comment %} <div class="form-row field-top">
+            <div>
+                <label id="label-1" class="required" for="id_section">상의</label>
+                <select name="top" id="id_section">
+                    <option value="1">블라우스</option>
+                    <option value="2">티셔츠</option>
+                    <option value="3">니트</option>
+                    <option value="4">후드티</option>                    
+                </select>
+            </div>
+        </div>
+        <div class="form-row field-pants">
+            <div>
+                <label id="label-1" class="required" for="id_section">하의</label>
+                <select name="pants" id="id_section">
+                    <option value="1">청바지</option>
+                    <option value="2">팬츠</option>
+                    <option value="3">스커트</option>
+                    <option value="4">레깅스</option>
+                    <option value="5">조거팬츠</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row field-outer">
+            <div>
+                <label id="label-1" class="required" for="id_section">아우터</label>
+                <select name="outer" id="id_section">
+                    <option value="1">코트</option>
+                    <option value="2">재킷</option>
+                    <option value="3">점퍼</option>
+                    <option value="4">패딩</option>
+                    <option value="5">베스트</option>
+                    <option value="6">가디건</option>
+                    <option value="7">집업</option>
+                </select>
+            </div>
+        </div> {% endcomment %} -->
+        <div class="form-row field-onepiece">
+            <div>
+                <label id="label-1" class="required" for="id_section">세부</label>
+                <select name="onepiece" id="id_section">
+                    <option value="원피스">원피스</option>                    
+                </select>
+            </div>
+        </div>
+        <div class="form-row field-closet_fit">
+            <div>
+                <label id="label-1" class="required" for="id_closet_fit">핏</label>
+                <input type="number" max="5" min="1" name="closet_fit" value="1" class="vIntegerField" required id="id_closet_fit">
+            </div>
+        </div>  
+        <input type="text" name="closet_title" placeholder="의류이름"><br><br>
+        <input type="file" name="closet_uploadedFile" class="warning"><br><br>
+        {% csrf_token %}
+        <input type="submit" value="저장" class="btn btn-warning" onclick="alert('저장완료')">
+        </br>
+    </form>
+</div>
+
+{% endblock %}

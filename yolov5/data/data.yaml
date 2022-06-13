@@ -1,0 +1,8 @@
+path: /content/yolov5/datasets/  # dataset root dir
+train: train/images  # train images (relative to 'path') 118287 images
+val: valid/images  # val images (relative to 'path') 5000 images
+test: test/images  # 20288 of 40670 images, submit to https://competitions.codalab.org/competitions/20794
+
+# Classes
+nc: 10  # number of classes
+names: ['트래디셔널', '매니시', '페미닌', '에스닉', '컨템포러리', '내추럴', '젠더리스', '스포티', '서브컬쳐', '캐주얼']

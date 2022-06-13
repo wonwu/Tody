@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "base.html" %}
+<div class="login-form " style="margin-top: 10%; "align="center">
+  <h3 class="mb-5">
+    <p class="text-warning login" style="text-align: center;">SIGNUP</p>
+  </h3>
+  <form method="post" class="post-form my-3">
+    {% csrf_token %} {% include "error/form_error.html" %}
+    <div class="form-group col-sm-3">
+      <input 
+          type="text" 
+          class="form-control" 
+          name="username" 
+          id="username" 
+          value="{{ form.username.value|default_if_none:'' }}"
+          placeholder="ID(아이디 또는 이메일)" />
+    </div>
+    <div class="form-group col-sm-3">
+      <input 
+          type="password" 
+          class="form-control" 
+          name="password1" 
+          id="password1" 
+          value="{{ form.password1.value|default_if_none:'' }}"
+          placeholder="PW(비밀번호)"
+      />
+    </div>
+    <div class="form-group col-sm-3">
+      <input 
+          type="password" 
+          class="form-control" 
+          name="password2" 
+          id="password2" 
+          value="{{ form.password2.value|default_if_none:'' }}"
+          placeholder="PW(비밀번호 재확인)" />
+    </div>
+    <div class="form-group col-sm-3">
+      <input 
+          type="text" 
+          class="form-control" 
+          name="email" 
+          id="email" 
+          value="{{ form.email.value|default_if_none:'' }}"
+          placeholder="이메일을 입력해주세요."
+      />
+    </div>
+    <button type="submit" class="btn btn-warning col-sm-3" style="margin-top: 1%;">생성하기</button>
+    <div class="sns-btn col-6">
+  </form>
+</div>
+{% endblock %}

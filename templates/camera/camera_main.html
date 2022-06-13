@@ -1,0 +1,97 @@
+{% extends 'base.html' %}{% block content %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>CAMERA</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!-- IE10, 11 지원을 위한 es6-promise -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.1/es6-promise.auto.js"></script>
+
+
+<div class="container mt-5 mx-auto">
+    <!-- 스트리밍 -->
+    <video  id="myVideo" width="500" height="380" style="border: 1px solid #ddd;"></video>
+    <!-- 캡쳐 -->
+    <canvas id="myCanvas" width="500" height="380" style="border: 1px solid #ddd;"></canvas><br>
+    <!-- 저장 -->
+    <div class=" col-sm-12 mt-5">
+        <input type=button value="카메라 시작" onclick="{getVideo()}" class="btn btn-warning col-sm-3">
+        <input type=button value="사진찍기" onclick="{takeSnapshot()}"class="btn btn-warning col-sm-3">
+        <button type="button" class="btnScreenShot btn btn-warning col-sm-3" id="btnScreenShot">저장하기</button>
+    </div>
+</div>
+<div id="img-out"></div>
+
+<!--  카메라 불러오는 스크립트 / 캡쳐스크립트  -->
+<script>
+  var myVideoStream = document.getElementById('myVideo')     // make it a global variable
+  var myStoredInterval = 0
+
+  {% comment %} 비디오 불러오기 {% endcomment %}
+  function getVideo(){
+  navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+  navigator.getMedia({video: true, audio: false},            
+    
+    function(stream) {
+      myVideoStream.srcObject = stream   
+      myVideoStream.play();
+    }, 
+
+    function(error) {
+        alert('webcam not working');
+    });
+}
+  
+    {% comment %} 캡쳐하기 {% endcomment %}
+    function takeSnapshot() {
+    var myCanvasElement = document.getElementById('myCanvas');
+    var myCTX = myCanvasElement.getContext('2d');
+    myCTX.drawImage(myVideoStream, 0, 0, myCanvasElement.width, myCanvasElement.height);
+    }
+  
+</script>
+
+<!-- 카메라 사진 저장스크립트  -->
+<script>
+$("#btnScreenShot").on("click", function() {
+  html2canvas(document.querySelector("#myCanvas")).then(function(canvas) {
+  if (canvas.msToBlob) { //for IE 10, 11
+  var blob = canvas.msToBlob();
+  window.navigator.msSaveBlob(blob, "closet.png");
+  } else {
+    saveAs(canvas.toDataURL(), "closet.png");
+  }
+});
+
+function saveAs(uri, filename) {
+  var link = document.createElement('a');
+  if (typeof link.download === 'string') {
+  link.href = uri;
+  link.download = filename;
+   //Firefox requires the link to be in the body
+  document.body.appendChild(link);
+   //simulate click
+  link.click();
+   //remove the link when done
+  document.body.removeChild(link);
+  } else {
+  window.open(uri);
+  }
+  }
+});
+</script>
+
+</body>
+</html>
+{% endblock %}  
