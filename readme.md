@@ -21,10 +21,10 @@
 
 ## 3. 구성도
 
-![aws_architecture](.\cloud\aws_architecture.png?raw=true)
+![aws_architecture](https://github.com/wonwu/Tody/blob/master/cloud/aws_architecture.png)
 - 그림1. 클라우드 AWS architecture 
 
-![project_architecture](.\cloud\project_architecture2.png?raw=true)
+![project_architecture](https://github.com/wonwu/Tody/blob/master/cloud/project_architecture2.png)
 - 그림2. 전체 프로젝트 architecture 
 
 
